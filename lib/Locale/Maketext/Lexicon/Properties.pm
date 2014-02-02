@@ -6,7 +6,7 @@ use utf8;
 use Encode ();
 use Locale::Maketext::Lexicon;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub parse {
     my $self = shift;
@@ -21,7 +21,7 @@ sub parse {
         #   foo=bar\r\n
         #   ~~~ ~~~
         #   $1  $2
-        if (/\A([^=]+)=(.+?)[\015\012]*\z/) {
+        if (/\A[ \t]*([^=]+?)[ \t]*=[ \t]*(.+?)[\015\012]*\z/) {
             push @out, $1, $2;
         }
     }
@@ -61,9 +61,14 @@ Directly calling C<Locale::Maketext::Lexicon::Properties::parse()>:
 
 =head1 DESCRIPTION
 
-This module parses .properties file (from Java) for L<Locale::Maketext> by using L<Locale::Maketext::Lexicon>. And it can also returns a Lexicon hash.
+This module parses the properties file (from Java) for L<Locale::Maketext> by using L<Locale::Maketext::Lexicon>. And it can also return a Lexicon hash.
 
-You can lookup the property value by specifying key to C<maketext()> or Lexcon hash.
+You are able to look up the property value by specifying key to C<maketext()> or Lexcon hash.
+
+=head1 NOTES
+
+Properties file can use colon (:) as delimiter as an alternative to equal (=), however this module cannot.
+And properties file allows multi-line property, but this module cannot handle it.
 
 =head1 SEE ALSO
 

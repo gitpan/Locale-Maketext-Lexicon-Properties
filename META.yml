@@ -29,7 +29,7 @@ no_index:
 provides:
   Locale::Maketext::Lexicon::Properties:
     file: lib/Locale/Maketext/Lexicon/Properties.pm
-    version: 0.02
+    version: 0.03
 requires:
   Encode: 0
   Locale::Maketext::Lexicon: 0
@@ -38,6 +38,6 @@ resources:
   bugtracker: https://github.com/moznion/Locale-Maketext-Lexicon-Properties/issues
   homepage: https://github.com/moznion/Locale-Maketext-Lexicon-Properties
   repository: git://github.com/moznion/Locale-Maketext-Lexicon-Properties.git
-version: 0.02
+version: 0.03
 x_contributors:
   - 'moznion <moznion@gmail.com>'

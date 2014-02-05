@@ -6,7 +6,7 @@ use utf8;
 use Encode ();
 use Locale::Maketext::Lexicon;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 sub parse {
     my $self = shift;
@@ -22,7 +22,9 @@ sub parse {
         #   ~~~ ~~~
         #   $1  $2
         if (/\A[ \t]*([^=]+?)[ \t]*=[ \t]*(.+?)[\015\012]*\z/) {
-            push @out, $1, $2;
+            my ($key, $value) = ($1,$2);
+            $value =~ s!\\n!\n!g;
+            push @out, $key, $value;
         }
     }
     return +{ @out };
